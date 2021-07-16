@@ -1,5 +1,5 @@
 import fs from "fs";
-import { MatchData } from "../enums";
+import { MatchData } from "../tuples";
 import { DataReader } from "../interfaces";
 import { dateStringtoDate } from "../utils";
 

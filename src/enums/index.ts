@@ -1,1 +1,5 @@
-export type MatchData = [Date, String, String, Number, Number, String];
+export enum MatchResult {
+  HomeWin = "H",
+  AwayWin = "A",
+  Draw = "D",
+}
