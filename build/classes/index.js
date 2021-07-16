@@ -26,20 +26,8 @@ var MatchReader = /** @class */ (function () {
         });
     };
     MatchReader.prototype.matchResultByTeam = function (team, result) {
-        var teamIndex;
-        switch (true) {
-            case result === enums_1.MatchResult.HomeWin:
-                teamIndex = 1;
-                break;
-            case result === enums_1.MatchResult.AwayWin:
-                teamIndex = 2;
-                break;
-            case result === enums_1.MatchResult.Draw:
-                teamIndex = 3;
-                break;
-        }
         return (this.matches
-            .filter(function (match) { return match[teamIndex] === team; })
+            .filter(function (match) { return match[enums_1.MatchResultIndex[result]] === team; })
             .filter(function (match) { return match[5] === result; }).length || 0);
     };
     return MatchReader;

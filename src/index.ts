@@ -14,7 +14,11 @@ const manWinsAway = matchReader.matchResultByTeam(
   MatchResult.AwayWin
 );
 
+const manDrawAway = matchReader.matchResultByTeam(
+  "Man United",
+  MatchResult.Draw
+);
 console.log(
-  `Manchester United wins ${manWinsHome} games as home team and ${manWinsAway} as away team.
+  `Manchester United wins ${manWinsHome} games as home team and ${manWinsAway} as away team. Drawn games ${manDrawAway}.
     `
 );

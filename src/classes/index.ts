@@ -2,7 +2,7 @@ import fs from "fs";
 import { MatchData } from "../tuples";
 import { DataReader } from "../interfaces";
 import { dateStringtoDate } from "../utils";
-import { MatchResult } from "../enums";
+import { MatchResult, MatchResultIndex } from "../enums";
 
 export class MatchReader {
   matches: MatchData[] = [];
@@ -20,22 +20,11 @@ export class MatchReader {
       ];
     });
   }
+
   matchResultByTeam(team: string, result: MatchResult): number {
-    let teamIndex: number;
-    switch (true) {
-      case result === MatchResult.HomeWin:
-        teamIndex = 1;
-        break;
-      case result === MatchResult.AwayWin:
-        teamIndex = 2;
-        break;
-      case result === MatchResult.Draw:
-        teamIndex = 3;
-        break;
-    }
     return (
       this.matches
-        .filter((match): boolean => match[teamIndex] === team)
+        .filter((match): boolean => match[MatchResultIndex[result]] === team)
         .filter((match): boolean => match[5] === result).length || 0
     );
   }

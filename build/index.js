@@ -7,4 +7,5 @@ var matchReader = new classes_1.MatchReader(csvFileReader);
 matchReader.load();
 var manWinsHome = matchReader.matchResultByTeam("Man United", enums_1.MatchResult.HomeWin);
 var manWinsAway = matchReader.matchResultByTeam("Man United", enums_1.MatchResult.AwayWin);
-console.log("Manchester United wins " + manWinsHome + " games as home team and " + manWinsAway + " as away team.\n    ");
+var manDrawAway = matchReader.matchResultByTeam("Man United", enums_1.MatchResult.Draw);
+console.log("Manchester United wins " + manWinsHome + " games as home team and " + manWinsAway + " as away team. Drawn games " + manDrawAway + ".\n    ");
