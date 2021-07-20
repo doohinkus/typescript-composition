@@ -5,6 +5,7 @@ var csvFileReader = new classes_1.CSVFileReader("football.csv");
 var matchReader = new classes_1.MatchReader(csvFileReader);
 matchReader.load();
 var summary = new classes_1.Summary(new classes_1.WinsAnalysis("Man United"), new classes_1.ConsoleReport());
+summary.buildAndPrintReport(matchReader.matches);
 // const manWinsHome = matchReader.matchResultByTeam(
 //   "Man United",
 //   MatchResult.HomeWin

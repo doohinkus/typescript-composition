@@ -15,6 +15,7 @@ const summary = new Summary(
   new WinsAnalysis("Man United"),
   new ConsoleReport()
 );
+summary.buildAndPrintReport(matchReader.matches);
 // const manWinsHome = matchReader.matchResultByTeam(
 //   "Man United",
 //   MatchResult.HomeWin
