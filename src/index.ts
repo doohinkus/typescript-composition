@@ -4,6 +4,7 @@ import {
   Summary,
   WinsAnalysis,
   ConsoleReport,
+  HTMLReport,
 } from "./classes";
 import { MatchResult } from "./enums";
 
@@ -13,9 +14,11 @@ matchReader.load();
 
 const summary = new Summary(
   new WinsAnalysis("Man United"),
-  new ConsoleReport()
+  new HTMLReport("report.html")
+  // new ConsoleReport()
 );
 summary.buildAndPrintReport(matchReader.matches);
+// summary.buildAndPrintReport(new HTMLReport("report.html"));
 // const manWinsHome = matchReader.matchResultByTeam(
 //   "Man United",
 //   MatchResult.HomeWin

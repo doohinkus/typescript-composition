@@ -77,7 +77,20 @@ export class WinsAnalysis implements Analyzer {
 }
 
 export class ConsoleReport implements OutputTarget {
-  print(report: string) {
+  print(report: string): void {
     console.log(report);
+  }
+}
+
+export class HTMLReport implements OutputTarget {
+  constructor(public fileName: string) {}
+  print(report: string): void {
+    const html = `
+    <div>
+      <h1>Analysis</h1>
+      <div>${report}</div>
+    </div>
+    `;
+    fs.writeFileSync(this.fileName, html);
   }
 }

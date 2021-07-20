@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ConsoleReport = exports.WinsAnalysis = exports.Summary = exports.CSVFileReader = exports.MatchReader = void 0;
+exports.HTMLReport = exports.ConsoleReport = exports.WinsAnalysis = exports.Summary = exports.CSVFileReader = exports.MatchReader = void 0;
 var fs_1 = __importDefault(require("fs"));
 var utils_1 = require("../utils");
 var enums_1 = require("../enums");
@@ -95,3 +95,14 @@ var ConsoleReport = /** @class */ (function () {
     return ConsoleReport;
 }());
 exports.ConsoleReport = ConsoleReport;
+var HTMLReport = /** @class */ (function () {
+    function HTMLReport(fileName) {
+        this.fileName = fileName;
+    }
+    HTMLReport.prototype.print = function (report) {
+        var html = "\n    <div>\n      <h1>Analysis</h1>\n      <div>" + report + "</div>\n    </div>\n    ";
+        fs_1.default.writeFileSync(this.fileName, html);
+    };
+    return HTMLReport;
+}());
+exports.HTMLReport = HTMLReport;

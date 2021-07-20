@@ -4,8 +4,11 @@ var classes_1 = require("./classes");
 var csvFileReader = new classes_1.CSVFileReader("football.csv");
 var matchReader = new classes_1.MatchReader(csvFileReader);
 matchReader.load();
-var summary = new classes_1.Summary(new classes_1.WinsAnalysis("Man United"), new classes_1.ConsoleReport());
+var summary = new classes_1.Summary(new classes_1.WinsAnalysis("Man United"), new classes_1.HTMLReport("report.html")
+// new ConsoleReport()
+);
 summary.buildAndPrintReport(matchReader.matches);
+// summary.buildAndPrintReport(new HTMLReport("report.html"));
 // const manWinsHome = matchReader.matchResultByTeam(
 //   "Man United",
 //   MatchResult.HomeWin
