@@ -6,18 +6,26 @@ import {
   ConsoleReport,
   HTMLReport,
 } from "./classes";
-import { MatchResult } from "./enums";
 
 const csvFileReader = new CSVFileReader("football.csv");
 const matchReader = new MatchReader(csvFileReader);
 matchReader.load();
-
-const summary = new Summary(
+let consoleSummary = new Summary(
   new WinsAnalysis("Man United"),
-  new HTMLReport("report.html")
-  // new ConsoleReport()
+  new ConsoleReport()
 );
-summary.buildAndPrintReport(matchReader.matches);
+let HTMLSummary = new Summary(
+  new WinsAnalysis("Man United"),
+  new HTMLReport("results.html")
+);
+
+consoleSummary.buildAndPrintReport(matchReader.matches);
+HTMLSummary.buildAndPrintReport(matchReader.matches);
+
+// Summary.TeamWinsConsoleReport("Man United");
+
+// summary.TeamWinsHtmlReport("Man United");
+// summary.buildAndPrintReport(matchReader.matches);
 // summary.buildAndPrintReport(new HTMLReport("report.html"));
 // const manWinsHome = matchReader.matchResultByTeam(
 //   "Man United",

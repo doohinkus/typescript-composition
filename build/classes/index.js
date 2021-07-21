@@ -56,6 +56,12 @@ var Summary = /** @class */ (function () {
         this.analyzer = analyzer;
         this.outputTarget = outputTarget;
     }
+    Summary.TeamWinsHtmlReport = function (team) {
+        return new Summary(new WinsAnalysis(team), new HTMLReport("report-summary.html"));
+    };
+    Summary.TeamWinsConsoleReport = function (team) {
+        return new Summary(new WinsAnalysis(team), new ConsoleReport("asfsadds"));
+    };
     Summary.prototype.buildAndPrintReport = function (matches) {
         this.outputTarget.print(this.analyzer.run(matches));
     };
@@ -89,6 +95,9 @@ exports.WinsAnalysis = WinsAnalysis;
 var ConsoleReport = /** @class */ (function () {
     function ConsoleReport() {
     }
+    // static report(): void {
+    //   console.log(this.report);
+    // }
     ConsoleReport.prototype.print = function (report) {
         console.log(report);
     };

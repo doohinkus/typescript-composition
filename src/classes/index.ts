@@ -47,6 +47,16 @@ export class Summary {
   // this class composes the methods from the other classes.
   // this is a weak "builder" pattern
   constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}
+
+  static TeamWinsHtmlReport(team: string): Summary {
+    return new Summary(
+      new WinsAnalysis(team),
+      new HTMLReport("report-summary.html")
+    );
+  }
+  static TeamWinsConsoleReport(team: string): Summary {
+    return new Summary(new WinsAnalysis(team), new ConsoleReport("asfsadds"));
+  }
   buildAndPrintReport(matches: MatchData[]): void {
     this.outputTarget.print(this.analyzer.run(matches));
   }
@@ -77,6 +87,9 @@ export class WinsAnalysis implements Analyzer {
 }
 
 export class ConsoleReport implements OutputTarget {
+  // static report(): void {
+  //   console.log(this.report);
+  // }
   print(report: string): void {
     console.log(report);
   }
